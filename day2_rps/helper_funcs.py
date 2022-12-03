@@ -15,6 +15,10 @@ def get_strategy_score_2(file):
 
 
 def rps(you: str, elf: str):
+    """Simulates rock paper scissors with input from strategy file and returns True for win,
+    False for loss, None for draw"""
+
+    # Determine winner of rps using negative indexing of lists
     hand = {
         'A': 1,  # Rock
         'B': 2,  # Paper
@@ -29,6 +33,8 @@ def rps(you: str, elf: str):
 
 
 def find_hand(condition: str, elf: str):
+    """Returns hand needed to obtain given game condition ( Win, Draw, Lose)"""
+
     conditions = {
         'X': False,  # Lose
         'Y': None,   # Draw
@@ -42,13 +48,18 @@ def find_hand(condition: str, elf: str):
     results = [None, False, True]
     hands = ['X', 'Y', 'Z']
 
+    '''Validates bool values and uses elf's hand and desired outcome to index hand to pass into rps function to obtain
+    desired game outcome'''
     if conditions[condition] is None:
         return hands[hand[elf] - 1]
     elif conditions[condition]:
-        return hands[hand[elf] - results.index(conditions[condition]) -1]
+        return hands[hand[elf] - results.index(conditions[condition]) - 1]
     else:
-        return hands[hand[elf] - results.index(conditions[condition]) -1]
+        return hands[hand[elf] - results.index(conditions[condition]) - 1]
 
 
 def score_calc(result: tuple):
+    """Returns score taking into account Win, Loss, Draw and extra point awarded for hand played"""
+
+    # Calculate score using bool values to validate
     return [6 + result[1] if result[0] else 3 + result[1] if result[0] is None else 0 + result[1] for i in result][0]
