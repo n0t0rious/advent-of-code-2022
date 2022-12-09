@@ -2,8 +2,6 @@ from helper import Folder, traverse_files
 
 
 def main():
-	traverse_files('directories.txt')
-
 	# Part 1
 	print(traverse_files('directories.txt'))
 
